@@ -14,15 +14,13 @@ stages {
     stage('Create Environment File') {
         steps {
             writeFile file: '.env', text: '''
-```
 
-DATABASE_URL=postgresql://postgres:admin@db:5432/postgres
+DATABASE_URL=postgresql://postgres@db:5432/postgres
 PORT=8000
 JWT_SECRET=mysecretkey
 '''
 }
 }
-
 
     stage('Stop Existing Containers') {
         steps {
@@ -47,7 +45,12 @@ JWT_SECRET=mysecretkey
             bat 'docker ps'
         }
     }
-}
 
+    stage('Verify Backend API') {
+        steps {
+            bat 'curl http://localhost:8000'
+        }
+    }
+}
 
 }
