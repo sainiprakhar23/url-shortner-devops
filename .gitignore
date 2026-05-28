@@ -1,0 +1,41 @@
+```gitignore
+# dependencies
+node_modules/
+
+# environment variables
+.env
+.env.*
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+postgres_data/
+docker-data/
+
+# build files
+dist/
+build/
+
+# coverage
+coverage/
+
+# VS Code
+.vscode/
+
+# Jenkins workspace junk
+workspace/
+
+# temporary files
+tmp/
+temp/
+
+# package lock backups
+*.bak
+```
