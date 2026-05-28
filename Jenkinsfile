@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 stages {
 
     stage('Verify Environment') {
@@ -36,6 +35,6 @@ stages {
         }
     }
 }
-```
+
 
 }
