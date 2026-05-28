@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(authenticationMiddleware);
 
 app.get('/', (req, res) => {
-  return res.json({ status: 'Docker hot reload working' });
+  return res.json({ status: 'CI/CD pipeline test successful" ' });
 });
 
 app.use('/user', userRouter);
