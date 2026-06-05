@@ -1,0 +1,9 @@
+# Production override — used on EC2
+# Overrides the app service to use the pre-built image from Docker Hub
+# instead of building from source. Run with:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d app db prometheus grafana node-exporter
+
+services:
+  app:
+    build: null                              # disable local build
+    image: rk936503/url-shortener:latest    # use pre-built image from Docker Hub
