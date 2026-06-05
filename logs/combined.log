@@ -1,0 +1,1 @@
+{"duration":"17ms","ip":"::1","level":"info","message":"HTTP Request","method":"GET","path":"/metrics","requestId":"af987650-f059-4427-8636-f7645c96eea7","service":"url-shortener","statusCode":200,"timestamp":"2026-05-26T19:03:17.837Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"}

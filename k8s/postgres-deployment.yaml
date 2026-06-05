@@ -1,0 +1,67 @@
+#Deployment: Runs the PostgreSQL container
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: url-shortener
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              value: postgres
+          volumeMounts:
+            - name: pg-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pg-storage
+          persistentVolumeClaim:
+            claimName: pg-pvc
+---
+# PVC: Persistent storage for database
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pg-pvc
+  namespace: url-shortener
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 1Gi
+---
+# Service: Stable network endpoint for PostgreSQL
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: url-shortener
+spec:
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+  type: ClusterIP
