@@ -50,7 +50,7 @@ Jenkins CI/CD Pipeline
 | Metrics | prom-client | Prometheus metrics at `/metrics` |
 | Containerisation | Docker + Docker Compose | Multi-service orchestration |
 | CI/CD | Jenkins (Docker-based) | Automated build, test & deploy |
-| Registry | Docker Hub | Image storage (`rk936503/url-shortener`) |
+| Registry | Docker Hub | Image storage (`sainiprakhar23/url-shortener`) |
 | Monitoring | Prometheus + Grafana | Live metrics & dashboards |
 | System Metrics | Node Exporter | Host CPU / memory metrics |
 | IaC | Terraform + CloudFormation | AWS infrastructure provisioning |
@@ -130,7 +130,7 @@ curl -L http://16.170.211.69:8000/abc123
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/rk936503/URL-Shortener-API.git
+git clone https://github.com/sainiprakhar23/url-shortner-devops.git
 cd URL-Shortener-API
 npm install
 ```
@@ -197,8 +197,8 @@ The pipeline runs on every push to `main`:
 1. Checkout       → Pull latest code from GitHub
 2. Install deps   → npm install
 3. Run tests      → npm test (Jest)
-4. Build image    → docker build -t rk936503/url-shortener:<build#>
-5. Push to Hub    → docker push rk936503/url-shortener
+4. Build image    → docker build -t sainiprakhar23/url-shortener:<build#>
+5. Push to Hub    → docker push sainiprakhar23/url-shortener
 6. Deploy to EC2  → SSH → docker compose up -d (all 5 services)
 ```
 
@@ -318,8 +318,8 @@ aws cloudformation deploy \
 
 ## 📦 Docker Hub
 
-Image: [`rk936503/url-shortener`](https://hub.docker.com/r/rk936503/url-shortener)
+Image: [`sainiprakhar23/url-shortener`](https://hub.docker.com/r/sainiprakhar23/url-shortener)
 
 ```bash
-docker pull rk936503/url-shortener:latest
+docker pull sainiprakhar23/url-shortener:latest
 ```
